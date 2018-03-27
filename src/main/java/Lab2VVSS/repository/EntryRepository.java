@@ -1,5 +1,6 @@
 package Lab2VVSS.repository;
 
+import Lab2VVSS.exceptions.InvalidBudgetException;
 import Lab2VVSS.model.Entry;
 
 import java.io.*;
@@ -16,7 +17,13 @@ public class EntryRepository {
 //        this.loadFromFile();
     }
 
-    public void addEntry(Entry e) {
+    public void addEntry(Entry e) throws Exception {
+        if(!e.getType().equals("cost") || !e.getType().equals("income"))
+            throw new InvalidBudgetException();
+        if(e.getValue()<0 ||e.getValue()>100000)
+            throw new InvalidBudgetException();
+        if(e.getIdMember()<0)
+            throw new InvalidBudgetException();
         entries.add(e);
         writeToFile(e);
     }

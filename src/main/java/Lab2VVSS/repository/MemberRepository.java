@@ -2,6 +2,7 @@ package Lab2VVSS.repository;
 
 import java.io.*;
 
+import Lab2VVSS.exceptions.InvalidNameException;
 import Lab2VVSS.model.*;
 
 import java.util.ArrayList;
