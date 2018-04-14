@@ -18,7 +18,7 @@ public class EntryRepository {
     }
 
     public void addEntry(Entry e) throws Exception {
-        if(!e.getType().equals("cost") || !e.getType().equals("income"))
+        if(!e.getType().equals("cost") && !e.getType().equals("income"))
             throw new InvalidBudgetException();
         if(e.getValue()<0 ||e.getValue()>100000)
             throw new InvalidBudgetException();

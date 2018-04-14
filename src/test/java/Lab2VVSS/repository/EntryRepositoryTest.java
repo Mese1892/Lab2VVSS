@@ -4,7 +4,6 @@ import Lab2VVSS.exceptions.InvalidBudgetException;
 import Lab2VVSS.model.Entry;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 public class EntryRepositoryTest {
 
@@ -21,4 +20,19 @@ public class EntryRepositoryTest {
         Entry entry= new Entry("income",-1100,12);
         entryRepository.addEntry(entry);
     }
+
+    @Test(expected = InvalidBudgetException.class)
+    public void addEntryID() throws Exception {
+        EntryRepository entryRepository= new EntryRepository();
+        Entry entry= new Entry("income",100,-11);
+        entryRepository.addEntry(entry);
+    }
+    @Test
+    public void addEntryValid() throws Exception{
+        EntryRepository entryRepository= new EntryRepository();
+        Entry entry= new Entry("income",100,12);
+        entryRepository.addEntry(entry);
+
+    }
+
 }
